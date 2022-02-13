@@ -64,7 +64,7 @@ def command_default(message):
     chatID = message.chat.id
     messageText = message.text.lower()
 
-    if messageText == "aboba":
+    if messageText == "aboba" or messageText == "абоба":
         img = open('./dataset/aboba.jpg', 'rb')
 
         bot.send_message(chatID, "Чё, шутник что ли, а может бан?)")
@@ -73,6 +73,11 @@ def command_default(message):
         img = open('./dataset/chmonya.jpg', 'rb')
 
         bot.send_message(chatID, "Опа, а вот это милый котик, даа...")
+        bot.send_photo(chatID, img)
+    elif messageText == "about" or messageText == "автор":
+        img = open('./dataset/author.jpg', 'rb')
+
+        bot.send_message(chatID, "Вот он, мой создатель Сашка, крутой чел и в целом приятный парень")
         bot.send_photo(chatID, img)
     else:
         bot.send_message(chatID, "Не понял, ты либо по делу пиши, либо фотку грузи.\n\nЕсли не знаешь что делать, пиши /help")
