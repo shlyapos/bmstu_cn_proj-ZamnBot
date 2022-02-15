@@ -8,14 +8,14 @@ from agegender_demo import start
 bot = telebot.TeleBot(TOKEN)
 
 knownUsers = []
-userStep = []
+userStep = {}
 
 
 @bot.message_handler(commands=['start'])
 def getStartCommand(message):
     chatID = message.chat.id
 
-    if chatID in knownUsers:
+    if chatID not in knownUsers:
         knownUsers.append(chatID)
         userStep[chatID] = 0
         bot.send_message(chatID, "Привет-привет, я умею определять пол и возраст человека по фоточке.\n\nДавай, пришли мне кого-нибудь или себя, а я взгляну.")
